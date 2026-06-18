@@ -1,3 +1,6 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
+
 const data = [
   {
     id: 1,
@@ -26,27 +29,85 @@ const data = [
     age: 36,
     job: "Director of Sales",
   },
+  {
+    id: 4,
+    firstname: "Raquela",
+    lastname: "Littlefield",
+    email: "rlittlefield3@google.co.uk",
+    gender: "Genderqueer",
+    age: 69,
+    job: "Business Systems Development Analyst",
+  },
+  {
+    id: 5,
+    firstname: "Robinetta",
+    lastname: "Loughney",
+    email: "rloughney4@typepad.com",
+    gender: "Female",
+    age: 40,
+    job: "Financial Advisor",
+  },
+  {
+    id: 6,
+    firstname: "Orelle",
+    lastname: "Domanski",
+    email: "odomanski5@angelfire.com",
+    gender: "Polygender",
+    age: 32,
+    job: "VP Accounting",
+  },
+  {
+    id: 7,
+    firstname: "Brandi",
+    lastname: "Haliburton",
+    email: "bhaliburton6@baidu.com",
+    gender: "Bigender",
+    age: 57,
+    job: "Engineer IV",
+  },
+  {
+    id: 8,
+    firstname: "Ario",
+    lastname: "Cormack",
+    email: "acormack7@sfgate.com",
+    gender: "Bigender",
+    age: 43,
+    job: "Speech Pathologist",
+  },
+  {
+    id: 9,
+    firstname: "Kirsti",
+    lastname: "Kimmerling",
+    email: "kkimmerling8@statcounter.com",
+    gender: "Female",
+    age: 27,
+    job: "Design Engineer",
+  },
+  {
+    id: 10,
+    firstname: "Orton",
+    lastname: "Renachowski",
+    email: "orenachowski9@amazon.co.uk",
+    gender: "Genderfluid",
+    age: 55,
+    job: "Technical Writer",
+  },
 ];
 
+function Card(props) {
+  return React.createElement("div", { className: "card", key: props.id }, [
+    React.createElement("h1", null, [props.firstname + " " + props.lastname]),
+    React.createElement("p", null, [props.email]),
+    React.createElement("p", null, [props.gender]),
+    React.createElement("p", null, [props.age]),
+    React.createElement("p", null, [props.job]),
+  ]);
+}
 function App() {
-  return (
-    <div className="container">
-      {data.map((user) => (
-        <div className="card" key={user.id}>
-          <h2>
-            {user.firstname} {user.lastname}
-          </h2>
-
-          <p>ასაკი: {user.age}</p>
-          <p>სქესი: {user.gender}</p>
-          <p>იმეილი: {user.email}</p>
-          <p>პროფესია: {user.job}</p>
-        </div>
-      ))}
-    </div>
-  );
+  return React.createElement("div", { className: "container" }, [
+    ...data.map((person) => React.createElement(Card, person)),
+  ]);
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
+const root = createRoot(document.getElementById("root"));
 root.render(<App />);
